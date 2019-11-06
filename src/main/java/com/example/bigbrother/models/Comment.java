@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity
 public class Comment {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -21,9 +23,9 @@ public class Comment {
 	@ManyToOne
 	private User user;
 	
-	@ManyToOne
+	/*@ManyToOne
 	@JsonIgnore
-	private Donation donation;
+	private Donation donation;*/
 	
 	@CreationTimestamp 
 	private Date created;
@@ -52,13 +54,13 @@ public class Comment {
 		this.user = user;
 	}
 
-	public Donation getRecipe() {
+	/*public Donation getRecipe() {
 		return donation;
 	}
 
 	public void setRecipe(Donation donation) {
 		this.donation = donation;
-	}
+	}*/
 
 	public Date getCreated() {
 		return created;

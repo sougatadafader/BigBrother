@@ -36,13 +36,13 @@ public class User {
 	@JsonIgnore
 	private List<Comment>comments;
 	
-	@OneToMany(mappedBy="user")
+	/*@OneToMany(mappedBy="user")
 	@JsonIgnore
 	private List<Donation>donations;
 	
 	@OneToMany(mappedBy="user")
 	@JsonIgnore
-	private List<Campaign>campaigns;
+	private List<Campaign>campaigns; */
 	
 	@CreationTimestamp 
 	private Date created;
@@ -109,7 +109,7 @@ private String userRole;
 		this.comments = comments;
 	}
 	
-	public List<Donation> getDonations() {
+	/*public List<Donation> getDonations() {
 		return donations;
 	}
 	
@@ -122,5 +122,5 @@ private String userRole;
 	}
 	public void setCampaigns(List<Campaign> campaigns) {
 		this.campaigns = campaigns;
-	}
+	}*/
 }
