@@ -18,8 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.bigbrother.models.User;
 import com.example.bigbrother.repositories.UserRepository;
 
-
-
 @RestController
 @CrossOrigin(origins = { "*" }, allowCredentials = "true",allowedHeaders = "*")
 public class UserService {
