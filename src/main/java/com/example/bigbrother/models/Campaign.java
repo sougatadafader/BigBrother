@@ -17,7 +17,7 @@ public class Campaign {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	private String Text;
+	private String text;
 	
 	@ManyToOne
 	private User user;
@@ -42,11 +42,11 @@ public class Campaign {
 	}
 
 	public String getText() {
-		return Text;
+		return text;
 	}
 
 	public void setText(String text) {
-		Text = text;
+		this.text = text;
 	}
 	
 	public User getUser() {
@@ -94,6 +94,17 @@ public class Campaign {
 
 	public void setTarget(float target) {
 		this.targetValue = target;
+	}
+	
+	public void set(Campaign newCampaign) {
+		  this.id = newCampaign.id;
+		  this.text = newCampaign.text;
+		  this.created = newCampaign.created;
+		  this.imageUrl = newCampaign.imageUrl;
+		  this.enabled = newCampaign.enabled;
+		  this.currentValue = newCampaign.currentValue;
+		  this.targetValue = newCampaign.targetValue;
+
 	}
 
 }

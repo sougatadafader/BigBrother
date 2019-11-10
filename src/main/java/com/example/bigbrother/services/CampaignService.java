@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -37,4 +38,14 @@ public class CampaignService {
 		return (List<Campaign>) campaignRepository.findAll();
 	}
 	
+	@PutMapping("/api/campaign/{campaignId}")
+	public Campaign updateCampaign(@PathVariable("campaignId") int id,@RequestBody Campaign newCampaign) {
+		Optional<Campaign> optional = campaignRepository.findById(id);
+		if(optional.isPresent()) {
+			Campaign camp = optional.get();
+			camp.set(newCampaign);
+			return campaignRepository.save(camp);
+		}
+        return null;
+	}
 }
