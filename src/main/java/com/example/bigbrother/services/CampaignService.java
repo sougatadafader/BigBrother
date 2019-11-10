@@ -38,6 +38,11 @@ public class CampaignService {
 		return (List<Campaign>) campaignRepository.findAll();
 	}
 	
+	@GetMapping("/api/campaign/{campaignId}")
+	public Optional<Campaign> getCampaign(@PathVariable("campaignId") int id){
+		return campaignRepository.findById(id);
+	}
+	
 	@PutMapping("/api/campaign/{campaignId}")
 	public Campaign updateCampaign(@PathVariable("campaignId") int id,@RequestBody Campaign newCampaign) {
 		Optional<Campaign> optional = campaignRepository.findById(id);

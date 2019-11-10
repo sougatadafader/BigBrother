@@ -17,6 +17,8 @@ public class Campaign {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
+	private String header;
+	
 	private String text;
 	
 	@ManyToOne
@@ -96,11 +98,20 @@ public class Campaign {
 		this.targetValue = target;
 	}
 	
+	public String getHeader() {
+		return header;
+	}
+
+	public void setHeader(String header) {
+		this.header = header;
+	}
+	
 	public void set(Campaign newCampaign) {
-		  this.id = newCampaign.id;
-		  this.text = newCampaign.text;
-		  this.created = newCampaign.created;
-		  this.imageUrl = newCampaign.imageUrl;
+		  this.id = newCampaign.id!=0?newCampaign.id:this.id;
+		  this.header = newCampaign.header!=null?newCampaign.header:this.header;
+		  this.text = newCampaign.text!=null?newCampaign.text:this.text;
+		  this.created = newCampaign.created!=null?newCampaign.created:this.created;
+		  this.imageUrl = newCampaign.imageUrl!=null?newCampaign.imageUrl:this.imageUrl;
 		  this.enabled = newCampaign.enabled;
 		  this.currentValue = newCampaign.currentValue;
 		  this.targetValue = newCampaign.targetValue;
