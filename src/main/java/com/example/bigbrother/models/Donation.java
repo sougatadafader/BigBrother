@@ -1,5 +1,5 @@
 package com.example.bigbrother.models;
 
-public class Campaign1 {
+public class Donation {
 
 }

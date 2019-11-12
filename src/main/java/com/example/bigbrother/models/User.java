@@ -32,17 +32,17 @@ public class User {
 	
 	private String aboutMe;
 	
-	@OneToMany(mappedBy="user")
-	@JsonIgnore
-	private List<Comment>comments;
-	
 	/*@OneToMany(mappedBy="user")
 	@JsonIgnore
 	private List<Donation>donations;
+	*/
+	@OneToMany(mappedBy="user")
+	@JsonIgnore
+	private List<Campaign>campaigns; 
 	
 	@OneToMany(mappedBy="user")
 	@JsonIgnore
-	private List<Campaign>campaigns; */
+	private List<Dependent> dependents;
 	
 	@CreationTimestamp 
 	private Date created;
@@ -102,19 +102,19 @@ private String userRole;
 		  this.aboutMe = newUser.aboutMe;
 		  this.userRole = newUser.userRole;
 	}
-	public List<Comment> getComments() {
-		return comments;
-	}
-	public void setComments(List<Comment> comments) {
-		this.comments = comments;
-	}
-	
+
 	/*public List<Donation> getDonations() {
 		return donations;
 	}
 	
 	public void setDonations(List<Donation> donations) {
 		this.donations = donations;
+	}*/
+	public List<Dependent> getDependents() {
+		return dependents;
+	}
+	public void setDependents(List<Dependent> dependents) {
+		this.dependents = dependents;
 	}
 	
 	public List<Campaign> getCampaigns() {
@@ -122,5 +122,5 @@ private String userRole;
 	}
 	public void setCampaigns(List<Campaign> campaigns) {
 		this.campaigns = campaigns;
-	}*/
+	}
 }
