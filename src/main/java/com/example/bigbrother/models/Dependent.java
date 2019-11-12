@@ -33,7 +33,7 @@ public class Dependent {
 	
 	private String landmark;
 	
-	private int zipcode;
+	private String zipcode;
 	
 	private boolean enabled = true;
 
@@ -80,11 +80,11 @@ public class Dependent {
 		this.landmark = landmark;
 	}
 
-	public int getZipcode() {
+	public String getZipcode() {
 		return zipcode;
 	}
 
-	public void setZipcode(int zipcode) {
+	public void setZipcode(String zipcode) {
 		this.zipcode = zipcode;
 	}
 
@@ -102,5 +102,13 @@ public class Dependent {
 
 	public void setCreated(Date created) {
 		this.created = created;
+	}
+	
+	public void set(Dependent newDependent) {
+		this.id = newDependent.id!=0?newDependent.id:this.id;
+		  this.firstName = newDependent.firstName!=null?newDependent.firstName:this.firstName;
+		  this.lastName = newDependent.lastName!=null?newDependent.lastName:this.lastName;
+		  this.landmark = newDependent.landmark!=null?newDependent.landmark:this.landmark;
+		  this.zipcode = newDependent.zipcode!=null?newDependent.zipcode:this.zipcode;
 	}
 }

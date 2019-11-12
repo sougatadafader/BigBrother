@@ -42,6 +42,8 @@ public class Campaign {
 		return id;
 	}
 
+	
+
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -107,6 +109,14 @@ public class Campaign {
 
 	public void setHeader(String header) {
 		this.header = header;
+	}
+	
+	public Dependent getDependent() {
+		return dependent;
+	}
+
+	public void setDependent(Dependent dependent) {
+		this.dependent = dependent;
 	}
 	
 	public void set(Campaign newCampaign) {
