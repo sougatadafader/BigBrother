@@ -10,6 +10,8 @@ import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Campaign {
 	
@@ -22,11 +24,22 @@ public class Campaign {
 	private String text;
 	
 	@ManyToOne
+	@JsonIgnore
 	private User user;
 	
+	private int creatorId;
+	
+	public int getCreator() {
+		return creatorId;
+	}
+	
+	public void setCreator(int creatorId) {
+		this.creatorId = creatorId;
+	}
+
 	@OneToOne
 	private Dependent dependent;
-	
+
 	@CreationTimestamp 
 	private Date created;
 	
@@ -110,10 +123,12 @@ public class Campaign {
 	public void setHeader(String header) {
 		this.header = header;
 	}
-	
+
 	public Dependent getDependent() {
 		return dependent;
 	}
+
+
 
 	public void setDependent(Dependent dependent) {
 		this.dependent = dependent;

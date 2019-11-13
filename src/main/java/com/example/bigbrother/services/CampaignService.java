@@ -31,14 +31,14 @@ public class CampaignService {
 	public Campaign createCampaign(@RequestBody Campaign campaign,@PathVariable("dependentId") int id, HttpSession session){
 		Optional<Dependent> dependent = dependentRepository.findById(id);
 		if(dependent.isPresent()) {
-			System.out.println("hello");
 			SystemUser currentUser = (SystemUser) session.getAttribute("currentUser");
 			Dependent dep = dependent.get();
 			campaign.setDependent(dep);
 			campaign.setUser(currentUser);
+			campaign.setCreator(currentUser.getId());
 			return campaignRepository.save(campaign);
 		}
-		return null;	
+		return null;
 	}
 	
 	@GetMapping("/api/campaigns")

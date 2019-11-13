@@ -6,13 +6,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 
 @Entity
 public class Dependent {
@@ -20,11 +16,7 @@ public class Dependent {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	@ManyToOne
-	private User user;
-	
-	@OneToOne(mappedBy="dependent")
-	@JsonIgnore
+	@OneToOne
 	private Campaign campaign;
 	
 	private String firstName;
@@ -46,14 +38,6 @@ public class Dependent {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
 	}
 
 	public String getFirstName() {

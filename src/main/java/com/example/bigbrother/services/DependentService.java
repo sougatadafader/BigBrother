@@ -27,7 +27,6 @@ public class DependentService {
 	@PostMapping("/api/dependent")
 	public Dependent createDependent(@RequestBody Dependent dependent, HttpSession session){
 		SystemUser currentUser = (SystemUser) session.getAttribute("currentUser");
-		dependent.setUser(currentUser);
 		Dependent dep = dependentRepository.save(dependent);
 		return dep;
 	}
