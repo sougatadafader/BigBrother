@@ -19,6 +19,8 @@ public class Dependent {
 	@OneToOne
 	private Campaign campaign;
 	
+	private int creatorId;
+
 	private String firstName;
 	
 	private String lastName;
@@ -40,6 +42,14 @@ public class Dependent {
 		this.id = id;
 	}
 
+	public int getCreatorId() {
+		return creatorId;
+	}
+
+	public void setCreatorId(int creatorId) {
+		this.creatorId = creatorId;
+	}
+	
 	public String getFirstName() {
 		return firstName;
 	}
