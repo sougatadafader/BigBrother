@@ -36,6 +36,7 @@ public class CampaignService {
 			campaign.setDependent(dep);
 			campaign.setUser(currentUser);
 			campaign.setCreator(currentUser.getId());
+			dep.setEnabled(false);
 			return campaignRepository.save(campaign);
 		}
 		return null;
