@@ -6,6 +6,30 @@
 ## API Documentation
 The REST service should provide a number of endpoints, as follows:
 
+### Dependent Endpoints
+
+**POST** ```api/dependent``` 
+ <br /> 
+@required body (example) : 
+``` { "firstName":"Wayne", "lastName":"Rooney", "landmark":"Near Northeastern University", "zipcode":"02120"}```
+
+>Create a dependent
+ - - - -
+ 
+ **GET** ```api/dependents``` 
+>returns all the dependents listed by all users.
+ - - - -
+ 
+ 
+**PUT** ```api/dependent/{dependentId}```
+<br /> 
+@required path variable (example) :
+``` 11```
+>Replaces the current values with the updated ones.
+(Note - Enabled value cannot be changed)
+ - - - -
+ 
+
 ### User Endpoints
 
 **POST** ```api/systemuser``` 
