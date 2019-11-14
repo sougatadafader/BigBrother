@@ -37,7 +37,10 @@ public class CampaignService {
 			campaign.setUser(currentUser);
 			campaign.setCreator(currentUser.getId());
 			dep.setEnabled(false);
-			return campaignRepository.save(campaign);
+			Campaign result =  campaignRepository.save(campaign);
+			dep.setCampaignId(result.getId());
+			dependentRepository.save(dep);
+			return result;
 		}
 		return null;
 	}

@@ -20,10 +20,14 @@ public class Dependent {
 	private Campaign campaign;
 	
 	private int creatorId;
-
+	
+	private int campId;
+	
 	private String firstName;
 	
 	private String lastName;
+	
+	private String imageUrl;
 	
 	private String landmark;
 	
@@ -48,6 +52,14 @@ public class Dependent {
 
 	public void setCreatorId(int creatorId) {
 		this.creatorId = creatorId;
+	}
+	
+	public int getCampaignId() {
+		return campId;
+	}
+
+	public void setCampaignId(int campId) {
+		this.campId = campId;
 	}
 	
 	public String getFirstName() {
