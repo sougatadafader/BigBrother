@@ -6,29 +6,6 @@
 ## API Documentation
 The REST service should provide a number of endpoints, as follows:
 
-### Dependent Endpoints
-
-**POST** ```api/dependent``` 
- <br /> 
-@required body (example) : 
-``` { "firstName":"Wayne", "lastName":"Rooney", "landmark":"Near Northeastern University", "zipcode":"02120"}```
-
->Create a dependent
- - - - -
- 
- **GET** ```api/dependents``` 
->returns all the dependents listed by all users.
- - - - -
- 
- 
-**PUT** ```api/dependent/{dependentId}```
-<br /> 
-@required path variable (example) :
-``` 11```
->Replaces the current values with the updated ones.
-(Note - Enabled value cannot be changed)
- - - - -
- 
 
 ### User Endpoints
 
@@ -68,4 +45,57 @@ The REST service should provide a number of endpoints, as follows:
 @required path variable (example) :
 ``` 11```
 >Replaces the current values with the updated ones. 
+ - - - -
+ 
+ ### Dependent Endpoints
+
+**POST** ```api/dependent``` 
+ <br /> 
+@required body (example) : 
+``` { "firstName":"Wayne", "lastName":"Rooney", "image":"Near Northeastern University", "zipcode":"02120"}```
+
+>Create a dependent
+ - - - -
+ 
+ **GET** ```api/dependents``` 
+>returns all the dependents listed by all users.
+ - - - -
+ 
+ 
+**PUT** ```api/dependent/{dependentId}```
+<br /> 
+@required path variable (example) :
+``` 11```
+>Replaces the current values with the updated ones.
+(Note - Enabled value cannot be changed)
+ - - - -
+
+### Campaign Endpoints
+
+**POST** ```/api/dependent/{dependentId}/campaign``` 
+ <br /> 
+@required body (example) : 
+``` { "header":"Help Needed", "text":"21 year old Mark needs your help", "imageUrl":"imageUrl", "targetValue":"10000"}```
+
+>Create a Campaign
+ - - - -
+ 
+ **GET** ```/api/campaigns``` 
+>returns all the campaigns listed by all users.
+ - - - -
+ 
+ 
+**GET** ```/api/campaign/{campaignId}```
+<br /> 
+@required path variable (example) :
+``` 11```
+>Fetches the particular campaign.
+ - - - -
+ 
+ **PUT** ```api/campaign/{campaignId}```
+<br /> 
+@required path variable (example) :
+``` 11```
+>Replaces the current values with the updated ones.
+(Note - Enabled value cannot be changed)
  - - - -
