@@ -117,4 +117,12 @@ public class Dependent {
 		  this.landmark = newDependent.landmark!=null?newDependent.landmark:this.landmark;
 		  this.zipcode = newDependent.zipcode!=null?newDependent.zipcode:this.zipcode;
 	}
+
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
 }

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.bigbrother.models.Dependent;
 import com.example.bigbrother.models.SystemUser;
+import com.example.bigbrother.models.User;
 import com.example.bigbrother.repositories.DependentRepository;
 
 @RestController
@@ -37,8 +38,8 @@ public class DependentService {
 		return (List<Dependent>) dependentRepository.findAll();
 	}
 	
-	@PutMapping("/api/campaign/{dependentId}")
-	public Dependent updateCampaign(@PathVariable("dependentId") int id,@RequestBody Dependent newDependent) {
+	@PutMapping("/api/dependent/{dependentId}")
+	public Dependent updateDependent(@PathVariable("dependentId") int id,@RequestBody Dependent newDependent) {
 		Optional<Dependent> optional = dependentRepository.findById(id);
 		if(optional.isPresent()) {
 			Dependent dep = optional.get();
@@ -48,6 +49,11 @@ public class DependentService {
         return null;
 	}
 	
+	@GetMapping("/api/user/{userId}/dependents")
+	public List<Dependent> getDependentsOfUser(@PathVariable("userId") int id) {
+		 List<Dependent> dependents = dependentRepository.findDependentsByUser(id);
+		 return dependents;
+	}
 	
 	
 }

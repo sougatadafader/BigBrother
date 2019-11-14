@@ -27,7 +27,7 @@ public class CampaignService {
 	@Autowired
 	DependentRepository dependentRepository;
 	
-	@PostMapping("/api/campaign/{dependentId}")
+	@PostMapping("/api/dependent/{dependentId}/campaign")
 	public Campaign createCampaign(@RequestBody Campaign campaign,@PathVariable("dependentId") int id, HttpSession session){
 		Optional<Dependent> dependent = dependentRepository.findById(id);
 		if(dependent.isPresent()) {
