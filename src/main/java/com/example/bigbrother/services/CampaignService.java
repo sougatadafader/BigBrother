@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.bigbrother.models.Campaign;
 import com.example.bigbrother.models.Dependent;
 import com.example.bigbrother.models.SystemUser;
+import com.example.bigbrother.models.User;
 import com.example.bigbrother.repositories.CampaignRepository;
 import com.example.bigbrother.repositories.DependentRepository;
+import com.example.bigbrother.repositories.UserRepository;
 
 @RestController
 @CrossOrigin(origins = { "*" }, allowCredentials = "true",allowedHeaders = "*")
@@ -26,6 +28,9 @@ public class CampaignService {
 	CampaignRepository campaignRepository;
 	@Autowired
 	DependentRepository dependentRepository;
+	
+	@Autowired
+	UserRepository userRepository;
 	
 	@PostMapping("/api/dependent/{dependentId}/campaign")
 	public Campaign createCampaign(@RequestBody Campaign campaign,@PathVariable("dependentId") int id, HttpSession session){
@@ -64,5 +69,31 @@ public class CampaignService {
 			return campaignRepository.save(camp);
 		}
         return null;
+	}
+	
+	@PostMapping("/api/campaign/{cId}/user/{uId}")
+    public boolean addCampaignToFavorite( @PathVariable("cId") int cId,
+            						      @PathVariable("uId") int uId) {
+        Campaign camp = campaignRepository.findById(cId).get();
+        User user = userRepository.findById(uId).get();
+        if(camp!=null && user!=null) {
+        	camp.addToFavoriteByUser(user);
+        	campaignRepository.save(camp);
+        	return true;
+        }
+    	return false;
+     }
+	
+	@GetMapping("/api/campaign/{cId}/user/{uId}")
+	public boolean isAddedToFavoriteByUser(@PathVariable("cId") int cId,
+                                           @PathVariable("uId") int uId){
+		User user = userRepository.findById(uId).get();
+		List<Campaign>favoriteCampaigns = user.getFavoriteCampaigns();
+		for(Campaign camp:favoriteCampaigns) {
+			if(camp.getId() == cId) {
+				return true;
+			}
+		}
+		return false;
 	}
 }

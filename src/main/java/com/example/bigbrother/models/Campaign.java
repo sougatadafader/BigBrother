@@ -1,10 +1,12 @@
 package com.example.bigbrother.models;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
@@ -27,15 +29,15 @@ public class Campaign {
 	@JsonIgnore
 	private User user;
 	
+	
+	@ManyToMany(mappedBy="favoriteCampaigns")
+	@JsonIgnore
+	private List<User> usersWhoLiked;
+	
+	
+
 	private int creatorId;
-	
-	public int getCreator() {
-		return creatorId;
-	}
-	
-	public void setCreator(int creatorId) {
-		this.creatorId = creatorId;
-	}
+
 
 	@OneToOne
 	private Dependent dependent;
@@ -55,12 +57,18 @@ public class Campaign {
 		return id;
 	}
 
-	
-
 	public void setId(int id) {
 		this.id = id;
 	}
 
+	public int getCreator() {
+		return creatorId;
+	}
+	
+	public void setCreator(int creatorId) {
+		this.creatorId = creatorId;
+	}
+	
 	public String getText() {
 		return text;
 	}
@@ -128,10 +136,25 @@ public class Campaign {
 		return dependent;
 	}
 
-
-
 	public void setDependent(Dependent dependent) {
 		this.dependent = dependent;
+	}
+	
+	public List<User> getUsersWhoLiked() {
+		return usersWhoLiked;
+	}
+
+	public void setUsersWhoLiked(List<User> usersWhoLiked) {
+		this.usersWhoLiked = usersWhoLiked;
+	}
+	
+	public void addToFavoriteByUser(User user) {
+        this.usersWhoLiked.add(user);
+        System.out.println(this.id);
+        if(!user.getFavoriteCampaigns().contains(this)) {
+        	System.out.println("In model "+user.getUsername());
+            user.getFavoriteCampaigns().add(this);
+        }
 	}
 	
 	public void set(Campaign newCampaign) {

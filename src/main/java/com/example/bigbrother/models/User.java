@@ -43,8 +43,19 @@ public class User {
 	@OneToMany(mappedBy="user")
 	private List<Campaign>campaigns;
 	
+		
 	@CreationTimestamp 
 	private Date created;
+	
+	
+	@ManyToMany
+	@JoinTable(name="LIKED",
+	joinColumns=@JoinColumn(name="USER_ID", 
+	referencedColumnName="ID"),
+	inverseJoinColumns=@JoinColumn(name=
+	   "CAMPAIGN_ID", referencedColumnName="ID"))
+	@JsonIgnore
+	private List<Campaign>favoriteCampaigns;
 	
 	private String userRole;
 	
@@ -110,6 +121,20 @@ public class User {
 	}
 	public void setCreated(Date created) {
 		this.created = created;
+	}
+	
+	public List<Campaign> getFavoriteCampaigns() {
+		return favoriteCampaigns;
+	}
+	public void setFavoriteCampaigns(List<Campaign> favoriteCampaigns) {
+		this.favoriteCampaigns = favoriteCampaigns;
+	}
+	
+	public void addCampaignToFavorite(Campaign campaign) {
+		this.favoriteCampaigns.add(campaign);
+		if(!campaign.getUsersWhoLiked().contains(this)) {
+			campaign.getUsersWhoLiked().add(this);
+		}
 	}
 	
 	public void set(User newUser) {
