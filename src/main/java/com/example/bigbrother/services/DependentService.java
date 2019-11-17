@@ -34,8 +34,13 @@ public class DependentService {
 	}
 	
 	@GetMapping("/api/dependents")
-	public List<Dependent> getAllCampaigns(){
+	public List<Dependent> getAllDependents(){
 		return (List<Dependent>) dependentRepository.findAll();
+	}
+	
+	@GetMapping("/api/dependents/{dependentId}")
+	public Optional<Dependent> getDependentById(@PathVariable("dependentId") int id){
+		return dependentRepository.findById(id);
 	}
 	
 	@PutMapping("/api/dependent/{dependentId}")
