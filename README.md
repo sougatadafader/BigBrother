@@ -61,6 +61,13 @@ The REST service should provide a number of endpoints, as follows:
 >returns all the dependents listed by all users.
  - - - -
  
+ **GET** ``` /api/dependents/{dependentId}``` 
+>returns the particular dependent with the ```{dependentId} ``` otherwise returns null.
+ - - - -
+ 
+  **GET** ``` /api/dependents/{dependentId}``` 
+>returns the particular dependent with the ```{dependentId} ``` otherwise returns null.
+ - - - -
  
 **PUT** ```api/dependent/{dependentId}```
 <br /> 
@@ -68,6 +75,10 @@ The REST service should provide a number of endpoints, as follows:
 ``` 11```
 >Replaces the current values with the updated ones.
 (Note - Enabled value cannot be changed)
+ - - - -
+ 
+ **GET** ``` /api/user/{userId}/dependents``` 
+>returns dependents of a particular user ```{userId} ``` otherwise returns null.
  - - - -
 
 ### Campaign Endpoints
@@ -84,7 +95,6 @@ The REST service should provide a number of endpoints, as follows:
 >returns all the campaigns listed by all users.
  - - - -
  
- 
 **GET** ```/api/campaign/{campaignId}```
 <br /> 
 @required path variable (example) :
@@ -99,3 +109,20 @@ The REST service should provide a number of endpoints, as follows:
 >Replaces the current values with the updated ones.
 (Note - Enabled value cannot be changed)
  - - - -
+
+**POST** ```/api/campaign/{cId}/user/{uId}```
+<br /> 
+@required path variable (example) :
+``` 11  11```
+>Adds Campaign to favourite for that particular user.
+Returns true if it is added else false.
+ - - - -
+
+**GET** ```/api/campaign/{cId}/user/{uId}```
+<br /> 
+@required path variable (example) :
+``` 11  11```
+>Checks if the user has liked that particular campaign
+ - - - -
+
+
