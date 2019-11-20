@@ -138,6 +138,9 @@ public class User {
 	}
 	
 	public void set(User newUser) {
+		  this.firstName = newUser.firstName;
+		  this.lastName = newUser.lastName;
+		  this.imageUrl = newUser.imageUrl;
 		  this.username = newUser.username;
 		  this.password = newUser.password;
 		  this.email = newUser.email;

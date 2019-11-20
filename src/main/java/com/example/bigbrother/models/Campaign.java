@@ -2,6 +2,7 @@ package com.example.bigbrother.models;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,6 +24,7 @@ public class Campaign {
 	
 	private String header;
 	
+	@Column(columnDefinition = "text")
 	private String text;
 	
 	@ManyToOne
@@ -107,23 +109,24 @@ public class Campaign {
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
+
 	
-	public float getCurrent() {
+	public float getCurrentValue() {
 		return currentValue;
 	}
 
-	public void setCurrent(float current) {
-		this.currentValue = current;
+	public void setCurrentValue(float currentValue) {
+		this.currentValue = currentValue;
 	}
 
-	public float getTarget() {
+	public float getTargetValue() {
 		return targetValue;
 	}
 
-	public void setTarget(float target) {
-		this.targetValue = target;
+	public void setTargetValue(float targetValue) {
+		this.targetValue = targetValue;
 	}
-	
+
 	public String getHeader() {
 		return header;
 	}
