@@ -37,10 +37,10 @@ public class User {
 	@Column(columnDefinition = "text")
 	private String aboutMe;
 	
-	/*@OneToMany(mappedBy="user")
+	@OneToMany(mappedBy="user")
 	@JsonIgnore
 	private List<Donation>donations;
-	*/
+	
 	@OneToMany(mappedBy="user")
 	private List<Campaign>campaigns;
 	
@@ -149,13 +149,13 @@ public class User {
 		  this.userRole = newUser.userRole;
 	}
 
-	/*public List<Donation> getDonations() {
+	public List<Donation> getDonations() {
 		return donations;
 	}
 	
 	public void setDonations(List<Donation> donations) {
 		this.donations = donations;
-	}*/
+	}
 	
 	public List<Campaign> getCampaigns() {
 		return campaigns;

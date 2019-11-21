@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -50,6 +51,10 @@ public class Campaign {
 	private String imageUrl;
 	
 	private boolean enabled = true;
+	
+	
+	@OneToMany(mappedBy="campaign")
+	private List<Donation> donations;
 
 	private float currentValue;
 
@@ -149,6 +154,14 @@ public class Campaign {
 
 	public void setUsersWhoLiked(List<User> usersWhoLiked) {
 		this.usersWhoLiked = usersWhoLiked;
+	}
+	
+	public List<Donation> getDonations() {
+		return donations;
+	}
+
+	public void setDonations(List<Donation> donations) {
+		this.donations = donations;
 	}
 	
 	public void addToFavoriteByUser(User user) {
