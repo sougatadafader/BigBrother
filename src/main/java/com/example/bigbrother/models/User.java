@@ -34,6 +34,7 @@ public class User {
 	@Column(unique=true)
 	private String email;
 	
+	@Column(columnDefinition = "text")
 	private String aboutMe;
 	
 	/*@OneToMany(mappedBy="user")
