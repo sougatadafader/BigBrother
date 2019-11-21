@@ -11,5 +11,8 @@ public interface DonationRepository extends CrudRepository<Donation, Integer>{
 
 	@Query("SELECT don from Donation don WHERE don.campaignNumber=:campaignNumber ")
 	public List<Donation> getDonationsByCampaign(@Param("campaignNumber") int campaignNumber);
+	
+	@Query("SELECT don from Donation don WHERE don.userNumber=:userNumber ")
+	public List<Donation> getDonationsByUser(@Param("userNumber") int userNumber);
 
 }

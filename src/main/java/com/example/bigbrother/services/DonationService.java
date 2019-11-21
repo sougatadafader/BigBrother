@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.bigbrother.models.Campaign;
-import com.example.bigbrother.models.Dependent;
 import com.example.bigbrother.models.Donation;
 import com.example.bigbrother.models.SystemUser;
 import com.example.bigbrother.repositories.CampaignRepository;
@@ -53,6 +52,17 @@ public class DonationService {
 	@GetMapping("/api/campaign/{campaignId}/donations")
 	public List<Donation> getDonationsOfCampaign(@PathVariable("campaignId") int id){
 		List<Donation> donations = donationRepository.getDonationsByCampaign(id);
+		if(donations.size()>0) {
+			Collections.reverse(donations);
+			return donations;
+		}
+		return null;
+	}
+	
+	@GetMapping("/api/user/{userId}/donations")
+	public List<Donation> getDonationsOfUser(@PathVariable("userId") int id){
+		List<Donation> donations = donationRepository.getDonationsByUser(id);
+		System.out.println(donations.size());
 		if(donations.size()>0) {
 			Collections.reverse(donations);
 			return donations;

@@ -21,6 +21,7 @@ public class Donation {
 	private int id;
 	
 	@ManyToOne
+	@JsonIgnore
 	private User user;
 
 	@CreationTimestamp 
@@ -31,6 +32,8 @@ public class Donation {
 	@ManyToOne
 	@JsonIgnore
 	private Campaign campaign;
+	
+	private int userNumber;
 	
 	private int campaignNumber;
 	
@@ -98,5 +101,13 @@ public class Donation {
 
 	public void setCampaignNumber(int campaignNumber) {
 		this.campaignNumber = campaignNumber;
+	}
+
+	public int getUserNumber() {
+		return userNumber;
+	}
+
+	public void setUserNumber(int userNumber) {
+		this.userNumber = userNumber;
 	}
 }
