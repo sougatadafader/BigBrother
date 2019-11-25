@@ -125,4 +125,18 @@ Returns true if it is added else false.
 >Checks if the user has liked that particular campaign
  - - - -
 
+**GET** ```/api/campaign/top/{n}```
+<br /> 
+@required path variable (example) :
+```2 ```
+>Fetches the top n campaigns based on the number of likes
+ - - - -
+ 
+ **GET** ```/api/campaigns/{campaignId}/likes/count/```
+<br /> 
+@required path variable (example) :
+```21 ```
+>Fetches number of likes for the particular campaign with {campaignId}
+ - - - -
+
 
