@@ -1,6 +1,8 @@
 package com.example.bigbrother.services;
 import javax.servlet.http.HttpSession;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -95,5 +97,37 @@ public class CampaignService {
 			}
 		}
 		return false;
+	}
+	
+	@GetMapping("/api/campaigns/{campaignId}/likes/count/")
+	public int getNumberOfLikes(@PathVariable("campaignId") int id){
+		Optional<Campaign> c= campaignRepository.findById(id);
+		Campaign camp = c.get();
+		return camp.getUsersWhoLiked().size();
+	}
+	
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@GetMapping("/api/campaign/top/{n}")
+	public List<Campaign> getTopNCampaign(@PathVariable("n") int n){
+		List<Campaign> camps = (List<Campaign>) campaignRepository.findAll();
+		
+		if(camps.size()==0) {
+			return null;
+		}
+		Collections.sort(camps, new Comparator() 
+		{
+			@Override
+		    public int compare(Object o1, Object o2) 
+		    {
+		    	return ( (((Campaign) o1).getUsersWhoLiked().size()) < ((Campaign) o2).getUsersWhoLiked().size()) ? 1:
+		    		( (((Campaign) o1).getUsersWhoLiked().size()) > ((Campaign) o2).getUsersWhoLiked().size()) ? -1:0;
+		        
+		    }
+		});
+		if(n<camps.size()) {
+			return camps.subList(0,n);
+		}
+		return camps;
 	}
 }
