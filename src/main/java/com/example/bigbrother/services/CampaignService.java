@@ -133,11 +133,24 @@ public class CampaignService {
 	@GetMapping("api/search/{str}")
 	public List<Campaign> getSearch(@PathVariable("str") String str) {
 		if (str.length() > 3) {
+			str = str.toLowerCase();
 			List<Campaign> camps = (List<Campaign>) campaignRepository.findAll();
 			List<Campaign> result = new ArrayList<>();
 			for (Campaign camp : camps) {
-				if (camp.getHeader().contains(str) || camp.getText().contains(str)) {
-					result.add(camp);
+				String header = camp.getHeader();
+				String text = camp.getText();
+				if (header != null) {
+
+					if (header.toLowerCase().contains(str)) {
+						result.add(camp);
+						continue;
+					}
+				}
+
+				if (text != null) {
+					if (text.toLowerCase().contains(str)) {
+						result.add(camp);
+					}
 				}
 			}
 			return result;
