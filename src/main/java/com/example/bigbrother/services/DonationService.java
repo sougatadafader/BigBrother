@@ -38,6 +38,7 @@ public class DonationService {
 			Campaign camp = campaign.get();
 			donation.setCampaign(camp);
 			donation.setUser(currentUser);
+			donation.setUserNumber(currentUser.getId());
 			donation.setCampaignNumber(id);
 			List<Donation> donations = camp.getDonations();
 			donations.add(donation);
