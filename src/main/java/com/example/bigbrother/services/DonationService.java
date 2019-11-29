@@ -43,6 +43,10 @@ public class DonationService {
 			List<Donation> donations = camp.getDonations();
 			donations.add(donation);
 			donationRepository.save(donation);
+			float currentVal = camp.getCurrentValue();
+			currentVal += donation.getValue();
+			camp.setCurrentValue(currentVal);
+			campaignRepository.save(camp);
 			List<Donation> donationList = camp.getDonations();
 			Collections.reverse(donationList);
 			return donationList;
