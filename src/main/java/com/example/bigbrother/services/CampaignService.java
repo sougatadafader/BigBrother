@@ -81,9 +81,9 @@ public class CampaignService {
 		Campaign camp = campaignRepository.findById(cId).get();
 		User user = userRepository.findById(uId).get();
 		if (camp != null && user != null) {
-			camp.addToFavoriteByUser(user);
+			boolean flag = camp.addToFavoriteByUser(user);
 			campaignRepository.save(camp);
-			return true;
+			return flag;
 		}
 		return false;
 	}

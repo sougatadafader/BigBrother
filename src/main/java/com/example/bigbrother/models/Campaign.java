@@ -164,12 +164,15 @@ public class Campaign {
 		this.donations = donations;
 	}
 	
-	public void addToFavoriteByUser(User user) {
+	public boolean addToFavoriteByUser(User user) {
         this.usersWhoLiked.add(user);
-        System.out.println(this.id);
         if(!user.getFavoriteCampaigns().contains(this)) {
-        	System.out.println("In model "+user.getUsername());
             user.getFavoriteCampaigns().add(this);
+            return true;
+        }
+        else {
+        	 user.getFavoriteCampaigns().remove(this);
+        	 return false;
         }
 	}
 	
