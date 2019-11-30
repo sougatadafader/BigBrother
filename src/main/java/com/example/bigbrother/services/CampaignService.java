@@ -155,7 +155,7 @@ public class CampaignService {
 			}
 			return result;
 		}
-		return null;
+		return new ArrayList<Campaign>();
 
 	}
 
