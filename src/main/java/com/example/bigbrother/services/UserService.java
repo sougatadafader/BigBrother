@@ -56,7 +56,7 @@ public class UserService {
 	}
 
 	@GetMapping("/api/liked/campaigns")
-	public List<Campaign> getCampaigns(HttpSession session) {
+	public List<Campaign> getLikedCampaigns(HttpSession session) {
 		User currentUser= (User) session.getAttribute("currentUser"); //retrieving the current user
 		
 		if(currentUser==null) {
