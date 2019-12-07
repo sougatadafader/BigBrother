@@ -120,7 +120,7 @@ public class CampaignService {
 		List<Campaign> camps = (List<Campaign>) campaignRepository.findAll();
 
 		if (camps.size() == 0) {
-			return null;
+			return new List<Campaign>;
 		}
 		Collections.sort(camps, new Comparator() {
 			@Override

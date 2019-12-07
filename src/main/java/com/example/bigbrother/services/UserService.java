@@ -48,22 +48,10 @@ public class UserService {
 		User currentUser= (User) session.getAttribute("currentUser"); //retrieving the current user
 		
 		if(currentUser==null) {
-			return null;
+			return new List<Campaign>;
 		}
 		System.out.println(currentUser.getUsername());
 		return currentUser.getCampaigns();
-	
-	}
-
-	@GetMapping("/api/liked/campaigns")
-	public List<Campaign> getLikedCampaigns(HttpSession session) {
-		User currentUser= (User) session.getAttribute("currentUser"); //retrieving the current user
-		
-		if(currentUser==null) {
-			return null;
-		}
-		System.out.println(currentUser.getUsername());
-		return currentUser.getFavoriteCampaigns();
 	
 	}
 	

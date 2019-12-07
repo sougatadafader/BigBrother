@@ -51,7 +51,7 @@ public class DonationService {
 			Collections.reverse(donationList);
 			return donationList;
 		}
-		return null;
+		return new List<Donation>;
 	}
 	
 	@GetMapping("/api/campaign/{campaignId}/donations")
@@ -61,7 +61,7 @@ public class DonationService {
 			Collections.reverse(donations);
 			return donations;
 		}
-		return null;
+		return new List<Donation>;
 	}
 	
 	@GetMapping("/api/user/{userId}/donations")
@@ -72,7 +72,7 @@ public class DonationService {
 			Collections.reverse(donations);
 			return donations;
 		}
-		return null;
+		return new List<Donation>;
 	}
 
 }
