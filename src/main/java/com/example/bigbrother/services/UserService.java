@@ -48,7 +48,7 @@ public class UserService {
 		User currentUser= (User) session.getAttribute("currentUser"); //retrieving the current user
 		
 		if(currentUser==null) {
-			return new List<Campaign>;
+			return new ArrayList<Campaign>();
 		}
 		System.out.println(currentUser.getUsername());
 		return currentUser.getCampaigns();
