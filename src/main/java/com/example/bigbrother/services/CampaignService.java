@@ -107,6 +107,13 @@ public class CampaignService {
 		return camp.getUsersWhoLiked().size();
 	}
 
+
+	@GetMapping("/api/user/{uId}/campaign/liked")
+	public List<Campaign> findFavoriteCampaignByUserId(@PathVariable("uId") int uId) {
+		User user = userRepository.findById(uId).get();
+		return user.getFavoriteCampaigns();
+	}
+
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@GetMapping("/api/campaign/top/{n}")
 	public List<Campaign> getTopNCampaign(@PathVariable("n") int n) {
